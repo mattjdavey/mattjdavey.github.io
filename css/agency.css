@@ -47,6 +47,10 @@ section h3.section-subheading {
     margin-bottom: 75px;
 }
 
+section h2.section-subheading a {
+  color: #fff;
+}
+
 @media (min-width: 768px) {
     section {
         padding: 150px 0;
