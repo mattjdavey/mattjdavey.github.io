@@ -75,7 +75,7 @@ body {
   #mainNav .container {
     padding: 0; }
     #mainNav .container .navbar-brand {
-      color: #546E7A;
+      color: white;
       font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive; }
       #mainNav .container .navbar-brand:hover, #mainNav .container .navbar-brand:focus, #mainNav .container .navbar-brand:active, #mainNav .container .navbar-brand.active {
         color: #3f535c; }
@@ -113,7 +113,7 @@ body {
         font-size: 1.25em; } }
 
 header.masthead {
-  background-image: url("../img/header-bg.jpg");
+  background-image: url("../img/tettegouche-background.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
