@@ -441,6 +441,8 @@ section#contact {
   background-repeat: no-repeat; }
   section#contact .section-heading {
     color: white; }
+  section#contact .section-subheading {
+    color: white; }
   section#contact .form-group {
     margin-bottom: 25px; }
     section#contact .form-group input,
