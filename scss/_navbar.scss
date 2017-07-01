@@ -14,7 +14,7 @@
     .container {
         padding: 0;
         .navbar-brand {
-            color: $theme-primary;
+            color: white;
             @include script-font;
             &:hover,
             &:focus,
