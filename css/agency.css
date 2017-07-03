@@ -25,6 +25,9 @@ h6 {
   text-transform: uppercase;
   font-weight: 700; }
 
+h2 {
+  margin-bottom: .75rem; }
+
 section {
   padding: 100px 0; }
   section h2.section-heading {
