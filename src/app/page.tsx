@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <div className="relative isolate px-6 pt-5 lg:px-8">
+      <div className="relative px-6 pt-5 lg:px-8">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -23,10 +23,10 @@ export default function Home() {
         </div>
         <div className="mx-auto max-w-2xl py-5">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl dark:text-gray-100">
               Hello world!
             </h1>
-            <p className="mt-6 text-lg leading-8 text-gray-600">
+            <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-200">
               My name is Matt Davey and I'm a developer. I plan to use this website to hold information that I've learned throughout my career.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -36,7 +36,7 @@ export default function Home() {
               >
                 About me
               </a>
-              <a href="/blog" className="text-sm font-semibold leading-6 text-gray-900">
+              <a href="/blog" className="text-sm font-semibold leading-6 text-gray-900 dark:text-gray-200">
                 Blog <span aria-hidden="true">→</span>
               </a>
             </div>
