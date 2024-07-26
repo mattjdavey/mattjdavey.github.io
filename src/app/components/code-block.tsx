@@ -5,9 +5,9 @@ export default function CodeBlock({
 }>) {
     return (
         <>
-            <code className="bg-slate-800 text-white p-3">
+            <div className="font-mono my-3 w-full bg-slate-800 text-white p-3">
                 {children}
-            </code>
+            </div>
         </>
     )
 }
