@@ -7,7 +7,7 @@ import ThemeSwitch from './themeswitch';
 
 const user = {
     imageUrl:
-        'https://media.licdn.com/dms/image/C5603AQEQAeuKugEbKQ/profile-displayphoto-shrink_800_800/0/1520303954133?e=1720051200&v=beta&t=R5Dcmln0V_VCki0qlaXQZ-wUJlEyn-iPLsOi4SgNz2Q',
+        'https://media.licdn.com/dms/image/C5603AQEQAeuKugEbKQ/profile-displayphoto-shrink_800_800/0/1520303954133?e=1727308800&v=beta&t=0BcMag-W79FsicBLrxWNDgrbsPvDhCVGuW3-_91--pc',
 }
 const navigation = [
     { name: 'Home', href: '/', current: true },
