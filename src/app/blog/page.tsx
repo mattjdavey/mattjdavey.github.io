@@ -10,7 +10,11 @@ export default function Blog() {
   return (
     <>
       <h1>Blog</h1>
-      <p className="text-center">Work in progress...</p>
+      <ul className="py-3 list-disc">
+            <li>
+                <a href="/blog/add-tailwind-to-blazor-app">How to add Tailwind to a Blazor application</a>
+            </li>
+        </ul>
       <BuildSvg />
     </>
   )
