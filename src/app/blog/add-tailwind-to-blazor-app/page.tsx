@@ -20,7 +20,7 @@ export default function AddTailwindToBlazorApp() {
                     Finally in <code>App.razor</code> add the following line
                     <br />
                     <code>
-                        <link rel="stylesheet" href="app.css" />
+                        &lt;link rel="stylesheet" href="app.css" /&gt;
                     </code>
                 </p>
             </div>
