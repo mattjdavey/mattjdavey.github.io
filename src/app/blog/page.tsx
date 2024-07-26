@@ -15,7 +15,6 @@ export default function Blog() {
                 <a href="/blog/add-tailwind-to-blazor-app">How to add Tailwind to a Blazor application</a>
             </li>
         </ul>
-      <BuildSvg />
     </>
   )
 
