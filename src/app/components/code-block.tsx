@@ -5,7 +5,7 @@ export default function CodeBlock({
 }>) {
     return (
         <>
-            <code className="bg-slate-800">
+            <code className="bg-slate-800 text-white p-3">
                 {children}
             </code>
         </>
