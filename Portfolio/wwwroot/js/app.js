@@ -11,9 +11,3 @@ document.addEventListener("DOMContentLoaded", function() {
         root.className += " dark";
     }
 });
-
-(function() {
-    if (location.pathname !== "/" && !location.pathname.startsWith("/index.html")) {
-        location.replace("/index.html" + location.search + location.hash);
-    }
-})();
