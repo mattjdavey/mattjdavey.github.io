@@ -26,12 +26,21 @@
 {
     private string? Theme { get; set; }
 
-    private async Task ChangeTheme()
+    protected override void OnInitialized()
     {
-        await JsRuntime.InvokeVoidAsync("toggleTheme");
-        var theme = await JsRuntime.InvokeAsync<string>("getTheme");
-        Theme = theme == "light" ? "light" : "dark";
+        GetTheme();
+    }
+
+    private void ChangeTheme()
+    {
+        Interop.ToggleTheme();
+
         StateHasChanged();
     }
 
+    private void GetTheme()
+    {
+        var theme = Interop.GetTheme();
+        Theme = theme == "light" ? "light" : "dark";
+    }
 }
