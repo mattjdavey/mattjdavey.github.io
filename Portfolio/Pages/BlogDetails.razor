@@ -2,6 +2,8 @@
 @using Markdig
 @inject HttpClient Http
 
+<PageTitle>@PostTitle | Blog</PageTitle>
+
 <Header HeaderText="@PostTitle"/>
 
 @if (!string.IsNullOrEmpty(RenderedMarkdown))
