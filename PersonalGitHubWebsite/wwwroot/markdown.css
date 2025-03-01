@@ -1,0 +1,17 @@
+.markdown-body pre {
+    background-color: #fafafa;
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 7px;
+    color: #000;
+}
+
+.markdown-body p {
+    padding-bottom: 5px;
+}
+
+.dark .markdown-body {
+    color: #fff;
+}

@@ -1,0 +1,78 @@
+@page "/blog/{postName}"
+@using Markdig
+@inject HttpClient Http
+
+<Header HeaderText="@PostTitle"/>
+
+@if (!string.IsNullOrEmpty(RenderedMarkdown))
+{
+    <div class="markdown-body">@((MarkupString)RenderedMarkdown)</div>
+}
+else if (IsLoading)
+{
+    <p>Loading post...</p>
+}
+else
+{
+    <p>Post not found.</p>
+}
+
+@code {
+    [Parameter]
+    public string? PostName { get; set; }
+
+    private string RenderedMarkdown = string.Empty;
+    private string PostTitle = string.Empty;
+    private bool IsLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        IsLoading = true;
+
+        if (!string.IsNullOrEmpty(PostName))
+        {
+            var postPath = $"blog-files/{PostName}.md";
+
+            try
+            {
+                // Fetch the Markdown file content
+                var markdownContent = await Http.GetStringAsync(postPath);
+
+                // Extract the first header (title)
+                PostTitle = ExtractTitleAndRemoveFromMarkdown(ref markdownContent);
+
+                // Convert Markdown to HTML
+                RenderedMarkdown = Markdown.ToHtml(markdownContent);
+            }
+            catch (HttpRequestException)
+            {
+                // Handle file not found or other errors
+                RenderedMarkdown = string.Empty;
+            }
+        }
+
+        IsLoading = false;
+    }
+
+    private string ExtractTitleAndRemoveFromMarkdown(ref string markdownContent)
+    {
+        // Split content into lines
+        var lines = markdownContent.Split('\n');
+
+        // Find the first line starting with #
+        var titleLineIndex = Array.FindIndex(lines, line => line.StartsWith("#"));
+
+        if (titleLineIndex >= 0)
+        {
+            // Get the title text (strip # and whitespace)
+            var title = lines[titleLineIndex].TrimStart('#').Trim();
+
+            // Remove the title line from the Markdown content
+            markdownContent = string.Join('\n', lines.Skip(titleLineIndex + 1));
+
+            return title;
+        }
+
+        return "Untitled Post";
+    }
+}
