@@ -1,12 +1,22 @@
 .markdown-body pre {
-    background-color: #fafafa;
-    padding: 15px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    border-radius: 7px;
-    color: #000;
-    overflow-x: auto;
+    padding: 1rem;
+    overflow: auto;
+    font-size: 85%;
+    line-height: 1.45;
+    color: #1f2328;
+    background-color: #f6f8fa;
+    border-radius: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+}
+
+.markdown-body pre>code {
+    padding: 0;
+    margin: 0;
+    word-break: normal;
+    white-space: pre;
+    background: transparent;
+    border: 0;
 }
 
 .markdown-body p {
@@ -17,7 +27,22 @@
     color: #fff;
 }
 
+.markdown-body a {
+    background-color: transparent;
+    color: #0969da;
+    text-decoration: none;
+}
+
 .markdown-body ul {
     list-style-type: disc;
     list-style-position: inside;
+}
+
+.markdown-body code {
+    font-size: 85%;
+    background-color: rgba(129, 139, 152, 0.12);
+    padding: 0.2em 0.4em;
+    margin: 0px;
+    white-space: break-spaces;
+    border-radius: 6px;
 }
