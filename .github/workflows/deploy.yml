@@ -1,4 +1,4 @@
-name: Next.js deployment.
+name: Blazor WASM deployment.
 
 on:
   push:

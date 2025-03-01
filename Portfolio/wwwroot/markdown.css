@@ -16,3 +16,8 @@
 .dark .markdown-body {
     color: #fff;
 }
+
+.markdown-body ul {
+    list-style-type: disc;
+    list-style-position: inside;
+}

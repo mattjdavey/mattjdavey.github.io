@@ -3,5 +3,10 @@
     "image": "./images/meina-yin-edwB2eeyfyc-unsplash.jpg",
     "title": "How to add Tailwind to a Blazor App",
     "url": "blog/add-tailwind-to-blazor-app"
+  },
+  {
+    "image": "./images/altumcode-XMFZqrGyV-Q-unsplash.jpg",
+    "title": "How to build a Blazor WASM GitHub Page",
+    "url": "blog/build-blazor-wasm-github-page"
   }
 ]
