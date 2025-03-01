@@ -46,11 +46,18 @@ jobs:
 
       - name: Install NPM dependencies
         run: npm install
-        working-directory: ./PathToYourProjectWithPackageJson
+        working-directory: ./Portfolio
 
       - name: Publish Blazor WASM
         run: |
-          dotnet publish -c Release -o publish --nologo
+          dotnet publish -c Release -o dist
+          
+      - name: Create .nojekyll file
+        run: touch dist/wwwroot/.nojekyll
+
+      - name: Copy index.html to 404.html
+        run: |
+          cp dist/wwwroot/index.html dist/wwwroot/404.html  
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
