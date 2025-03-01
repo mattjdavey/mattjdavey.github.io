@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PersonalGitHubWebsite", "PersonalGitHubWebsite\PersonalGitHubWebsite.csproj", "{E7CF01F9-2291-4AED-953E-EF01D92AF19B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portfolio", "Portfolio\Portfolio.csproj", "{E7CF01F9-2291-4AED-953E-EF01D92AF19B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

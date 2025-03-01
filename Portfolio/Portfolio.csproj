@@ -22,8 +22,4 @@
       <Folder Include="wwwroot\images\" />
     </ItemGroup>
 
-    <ItemGroup>
-      <_ContentIncludedByDefault Remove="Pages\Toolbox\Docker.razor" />
-    </ItemGroup>
-
 </Project>

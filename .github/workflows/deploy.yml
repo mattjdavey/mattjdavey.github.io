@@ -36,7 +36,7 @@ jobs:
 
       - name: Install NPM dependencies
         run: npm install
-        working-directory: ./PersonalGitHubWebsite
+        working-directory: ./Portfolio
 
       - name: Publish Blazor WASM
         run: |
