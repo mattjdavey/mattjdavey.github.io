@@ -40,7 +40,7 @@ jobs:
 
       - name: Publish Blazor WASM
         run: |
-          dotnet publish -c Release -o dist
+          dotnet publish --configuration Release --output dist
           
       - name: Create .nojekyll file
         run: touch dist/wwwroot/.nojekyll
@@ -52,7 +52,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./publish/wwwroot
+          path: ./dist/wwwroot
 
   deploy:
     environment:
