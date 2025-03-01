@@ -39,45 +39,80 @@
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
-                    <Disclosure.Button
+                    <button
+                        @onclick="ToggleMobileMenu"
                         class="ml-3 relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                         <span class="absolute -inset-0.5"/>
                         <span class="sr-only">Open main menu</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                             stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-                        </svg>
-
-                        @* {open ? ( *@
-                        @* <XMarkIcon class="block h-6 w-6" aria-hidden="true" /> *@
-                        @* ) : ( *@
-                        @* <Bars3Icon class="block h-6 w-6" aria-hidden="true" /> *@
-                        @* )} *@
-                    </Disclosure.Button>
+                        @if (IsMobileMenuOpen)
+                        {
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none" viewBox="0 0 24 24"
+                                stroke-width="1.5" stroke="currentColor"
+                                class="block h-6 w-6"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/>
+                            </svg>
+                        }
+                        else
+                        {
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="block h-6 w-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                      d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+                            </svg>
+                        }
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+    @if (IsMobileMenuOpen)
+    {
+        <div class="md:hidden">
+            <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+                <NavLink
+                    @onclick="ToggleMobileMenu"
+                    href="/"
+                    Match="NavLinkMatch.All"
+                    ActiveClass="bg-gray-900 text-white"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">
+                    Home
+                </NavLink>
+                <NavLink
+                    @onclick="ToggleMobileMenu"
+                    href="/blog"
+                    Match="NavLinkMatch.All"
+                    ActiveClass="bg-gray-900 text-white"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">
+                    Blog
+                </NavLink>
+                <NavLink
+                    @onclick="ToggleMobileMenu"
+                    href="/toolbox"
+                    Match="NavLinkMatch.All"
+                    ActiveClass="bg-gray-900 text-white"
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">
+                    Toolbox
+                </NavLink>
+            </div>
+        </div>
+    }
 </nav>
 
+@code {
 
-@* <Disclosure.Panel class="md:hidden"> *@
-@*     <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3"> *@
-@*         {navigation.map((item) => ( *@
-@*         <Disclosure.Button *@
-@*             onClick={() => router.push(item.href)} *@
-@*         key={item.name} *@
-@*         as="a" *@
-@*         href={item.href} *@
-@*         class={classs( *@
-@*         pathName === item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white', *@
-@*         'block rounded-md px-3 py-2 text-base font-medium' *@
-@*         )} *@
-@*         aria-current={pathName === item.href ? 'page' : undefined} *@
-@*         > *@
-@*         {item.name} *@
-@*         </Disclosure.Button> *@
-@*         ))} *@
-@*     </div> *@
-@* </Disclosure.Panel> *@
+    private bool IsMobileMenuOpen { get; set; }
+
+    private void ToggleMobileMenu()
+    {
+        IsMobileMenuOpen = !IsMobileMenuOpen;
+    }
+
+}
