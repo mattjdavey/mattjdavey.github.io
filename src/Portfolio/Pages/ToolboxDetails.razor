@@ -1,15 +1,15 @@
 @page "/toolbox/{ToolboxUrl}"
 @inject HttpClient Http
 
-<PageTitle>@ToolboxTitle | Toolbox</PageTitle>
+<PageTitle>@_toolboxTitle | Toolbox</PageTitle>
 
-<Header HeaderText="@ToolboxTitle"/>
+<Header HeaderText="@_toolboxTitle"/>
 
-@if (!string.IsNullOrEmpty(RenderedMarkdown))
+@if (!string.IsNullOrEmpty(_renderedMarkdown))
 {
-    <div class="prose dark:prose-invert">@((MarkupString)RenderedMarkdown)</div>
+    <div class="prose dark:prose-invert">@((MarkupString)_renderedMarkdown)</div>
 }
-else if (IsLoading)
+else if (_isLoading)
 {
     <div class="w-full rounded-md border border-blue-300 p-4">
         <div class="flex animate-pulse space-x-4">
@@ -33,16 +33,15 @@ else
 }
 
 @code {
-    [Parameter]
-    public string? ToolboxUrl { get; set; }
+    [Parameter] public string? ToolboxUrl { get; set; }
 
-    private string RenderedMarkdown = string.Empty;
-    private string ToolboxTitle = string.Empty;
-    private bool IsLoading = true;
+    private string _renderedMarkdown = string.Empty;
+    private string _toolboxTitle = string.Empty;
+    private bool _isLoading = true;
 
     protected override async Task OnParametersSetAsync()
     {
-        IsLoading = true;
+        _isLoading = true;
 
         if (!string.IsNullOrEmpty(ToolboxUrl))
         {
@@ -51,14 +50,15 @@ else
             try
             {
                 var htmlContent = await Http.GetStringAsync(postPath);
-                (RenderedMarkdown, ToolboxTitle) = Helpers.GetHtmlContent(htmlContent);
+                (_renderedMarkdown, _toolboxTitle) = Helpers.GetHtmlContent(htmlContent);
             }
             catch (HttpRequestException)
             {
-                RenderedMarkdown = string.Empty;
+                _renderedMarkdown = string.Empty;
             }
         }
 
-        IsLoading = false;
+        _isLoading = false;
     }
+
 }

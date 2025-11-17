@@ -12,6 +12,7 @@
         <li><a href="@toolboxFile.Url">@toolboxFile.Title</a></li>
     }
 </ul>
+
 @code {
     private List<ToolboxDetail>? ToolboxFiles { get; set; }
 
@@ -28,7 +29,8 @@
         [JsonPropertyName("image")] public required string Image { get; set; }
 
         [JsonPropertyName("title")] public required string Title { get; set; }
-        
+
         [JsonPropertyName("url")] public required string Url { get; set; }
     }
+
 }

@@ -1,18 +1,17 @@
 @page "/blog/{postName}"
-@using System.Text.RegularExpressions
 @inject HttpClient Http
 
-<PageTitle>@PostTitle | Blog</PageTitle>
+<PageTitle>@_postTitle | Blog</PageTitle>
 
-<Header HeaderText="@PostTitle"/>
+<Header HeaderText="@_postTitle"/>
 
-@if (!string.IsNullOrEmpty(RenderedMarkdown))
+@if (!string.IsNullOrEmpty(_renderedMarkdown))
 {
     <div class="prose dark:prose-invert">
-        @((MarkupString)RenderedMarkdown)
+        @((MarkupString)_renderedMarkdown)
     </div>
 }
-else if (IsLoading)
+else if (_isLoading)
 {
     <div class="w-full rounded-md border border-blue-300 p-4">
         <div class="flex animate-pulse space-x-4">
@@ -38,13 +37,13 @@ else
 @code {
     [Parameter] public string? PostName { get; set; }
 
-    private string RenderedMarkdown = string.Empty;
-    private string PostTitle = string.Empty;
-    private bool IsLoading = true;
+    private string _renderedMarkdown = string.Empty;
+    private string _postTitle = string.Empty;
+    private bool _isLoading = true;
 
     protected override async Task OnParametersSetAsync()
     {
-        IsLoading = true;
+        _isLoading = true;
 
         if (!string.IsNullOrEmpty(PostName))
         {
@@ -53,15 +52,15 @@ else
             try
             {
                 var htmlContent = await Http.GetStringAsync(postPath);
-                (RenderedMarkdown, PostTitle) =  Helpers.GetHtmlContent(htmlContent);
+                (_renderedMarkdown, _postTitle) = Helpers.GetHtmlContent(htmlContent);
             }
             catch (HttpRequestException)
             {
-                RenderedMarkdown = string.Empty;
+                _renderedMarkdown = string.Empty;
             }
         }
 
-        IsLoading = false;
+        _isLoading = false;
     }
 
 }
