@@ -1,0 +1,45 @@
+@page "/blog"
+@using System.Text.Json
+@using System.Text.Json.Serialization
+@inject HttpClient HttpClient
+
+<PageTitle>Blog</PageTitle>
+
+<section>
+    <div class="max-w-4xl">
+        <h1 class="text-3xl font-bold mb-6 dark:text-white">Blog</h1>
+        <div class="grid md:grid-cols-2 gap-6">
+            @foreach (var blogFile in BlogFiles)
+            {
+                <a href="@blogFile.Url" class="bg-white shadow-lg rounded-lg overflow-hidden">
+                    <img src="@blogFile.Image" alt="Blog Image" class="w-full h-48 object-cover">
+                    <div class="p-4">
+                        <h2 class="text-xl font-semibold">@blogFile.Title</h2>
+                    </div>
+                </a>
+            }
+        </div>
+    </div>
+</section>
+
+@code
+{
+    private List<BlogDetail>? BlogFiles { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await HttpClient
+            .GetStringAsync("blog/posts.json");
+        BlogFiles = JsonSerializer
+            .Deserialize<List<BlogDetail>>(response) ?? [];
+    }
+
+    public class BlogDetail
+    {
+        [JsonPropertyName("image")] public required string Image { get; set; }
+
+        [JsonPropertyName("title")] public required string Title { get; set; }
+        
+        [JsonPropertyName("url")] public required string Url { get; set; }
+    }
+}

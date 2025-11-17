@@ -1,0 +1,8 @@
+<h1 id="docker">Docker</h1>
+<h2 id="databases">Databases</h2>
+<h3 id="postgresql">PostgreSQL</h3>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">--name</span> PostgresDb <span class="at">-p</span> 5432:5432 <span class="at">-e</span> POSTGRES_USER=postgres <span class="at">-e</span> POSTGRES_PASSWORD=password <span class="at">-d</span> postgres:latest</span></code></pre></div>
+<h3 id="microsoft-sql-server-express">Microsoft SQL Server Express</h3>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-e</span> <span class="st">&quot;ACCEPT_EULA=Y&quot;</span> <span class="at">-e</span> <span class="st">&quot;MSSQL_SA_PASSWORD=yourStrong(!)Password&quot;</span> <span class="at">-e</span> <span class="st">&quot;MSSQL_PID=Express&quot;</span> <span class="at">-p</span> 1433:1433 <span class="at">-d</span> mcr.microsoft.com/mssql/server:2019-latest </span></code></pre></div>

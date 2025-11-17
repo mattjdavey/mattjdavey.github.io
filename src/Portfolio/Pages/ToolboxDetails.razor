@@ -1,0 +1,64 @@
+@page "/toolbox/{ToolboxUrl}"
+@inject HttpClient Http
+
+<PageTitle>@ToolboxTitle | Toolbox</PageTitle>
+
+<Header HeaderText="@ToolboxTitle"/>
+
+@if (!string.IsNullOrEmpty(RenderedMarkdown))
+{
+    <div class="prose dark:prose-invert">@((MarkupString)RenderedMarkdown)</div>
+}
+else if (IsLoading)
+{
+    <div class="w-full rounded-md border border-blue-300 p-4">
+        <div class="flex animate-pulse space-x-4">
+            <div class="size-10 rounded-full bg-gray-200"></div>
+            <div class="flex-1 space-y-6 py-1">
+                <div class="h-2 rounded bg-gray-200"></div>
+                <div class="space-y-3">
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="col-span-2 h-2 rounded bg-gray-200"></div>
+                        <div class="col-span-1 h-2 rounded bg-gray-200"></div>
+                    </div>
+                    <div class="h-2 rounded bg-gray-200"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <p>Post not found.</p>
+}
+
+@code {
+    [Parameter]
+    public string? ToolboxUrl { get; set; }
+
+    private string RenderedMarkdown = string.Empty;
+    private string ToolboxTitle = string.Empty;
+    private bool IsLoading = true;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        IsLoading = true;
+
+        if (!string.IsNullOrEmpty(ToolboxUrl))
+        {
+            var postPath = $"toolbox/html/{ToolboxUrl}.html";
+
+            try
+            {
+                var htmlContent = await Http.GetStringAsync(postPath);
+                (RenderedMarkdown, ToolboxTitle) = Helpers.GetHtmlContent(htmlContent);
+            }
+            catch (HttpRequestException)
+            {
+                RenderedMarkdown = string.Empty;
+            }
+        }
+
+        IsLoading = false;
+    }
+}
